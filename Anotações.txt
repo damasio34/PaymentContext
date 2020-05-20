@@ -1,0 +1,14 @@
+# Primitives Obsessioon
+    - Obseção por tipos primitivos;
+    - Com tipos primitivos perdemos os reusos,
+        ex.: tipos number, e-mail, document usados no projeto,
+        poderiam ser tipos complexos;
+    - Temos a tendência por sempre usarmos tipos primitivos, 
+        mas isso não é uma boa prática, o código vai ficando mais rico
+        quando utulizamos tipos complexos, 
+        o que reduz os pontos de teste e validação no código;
+    - Exemplo da aplicação: no cenário onde é necessário validar a quantidade 
+        de caracteres de uma string, pode se criar um método para escrever o processo apenas uma vez.
+        Código de validação -> if (document.Length > 13)
+        Método de validação -> EhMaior(string valor, int quantidade);
+    - Cria um código mais maduro e mais testável;
