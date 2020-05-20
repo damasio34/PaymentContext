@@ -11,4 +11,8 @@
         de caracteres de uma string, pode se criar um método para escrever o processo apenas uma vez.
         Código de validação -> if (document.Length > 13)
         Método de validação -> EhMaior(string valor, int quantidade);
-    - Cria um código mais maduro e mais testável;
+    - Cria um código mais maduro e mais testável.
+# VO - Value Object
+    - São objetos de valor que compõem uma entidade;
+    - Geralmente são persistidos dentro da entidade,
+        ex: não existe uma tabela name.

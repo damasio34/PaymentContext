@@ -1,16 +1,17 @@
 using System.Collections.Generic;
 using System.Linq;
+using PaymentContext.Domain.ValueObjects;
+using PaymentContext.Shared.Entities;
 
 namespace PaymentContext.Domain.Entities
 {
-    public class Student
+    public class Student : Entity
     {
         private IList<Subscription> _subscriptions;
 
-        public Student(string firstName, string lastName, string document, string email)
+        public Student(Name name, Document document, Email email)
         {
-            this.FirstName = firstName;
-            this.LastName = lastName;
+            this.Name = name;
             this.Document = document;
             this.Email = email;
             this._subscriptions = new List<Subscription>();
@@ -23,11 +24,14 @@ namespace PaymentContext.Domain.Entities
             */
         }
 
-        public string FirstName { get; private set; }
-        public string LastName { get; private set; }
-        public string Document { get; private set; }
-        public string Email { get; private set; }
-        public string Address { get; private set; }
+        /*
+            Foram trocadas as propriedades FirstName e LastName pelo ValueObject Name, 
+            a fim de centralizar todas as regras e validações relacionadas ao nome do aluno.            
+        */
+        public Name Name { get; private set; }
+        public Document Document { get; private set; }
+        public Email Email { get; private set; }
+        public Address Address { get; private set; }
         /*
             O tipo da lista foi alterado para IReadOnlyCollection, 
             pois como há um método para inserção de novas assinaturas, 
