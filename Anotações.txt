@@ -16,3 +16,12 @@
     - São objetos de valor que compõem uma entidade;
     - Geralmente são persistidos dentro da entidade,
         ex: não existe uma tabela name.
+# Sobre exceptions:
+    - É o jeito mais fácil de estorar uma exceção, 
+        mas tem um custo auto pro processador, pois uma exceção interrompe a thread.
+        Quando uma exceção não é tratada, além de interromper a theread o erro é armazenado no log do windows.
+        Não difícil de acontecer é travar o servidor pelo disparo de diversas exceptions nãot tratadas.
+    - Qual da diferença de uma validação para uma exceção?
+        - Uma exceção é quando ocorre algo que não era pra acontecer e aconteceu, 
+            ex.: o banco fora, é algo que não era pra ocorrer, mas ocorreu.
+        - Uma validação é algo que você espera que aconteça, algo previsto.

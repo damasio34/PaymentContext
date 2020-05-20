@@ -22,6 +22,8 @@ namespace PaymentContext.Domain.Entities
                 Open Close Principle: A classe está aberta para extensões, mas fechada para modificações, 
                 ou seja, ninguém de fora da classe pode alterar esses dados.
             */
+
+            AddNotifications(name, document, email);
         }
 
         /*

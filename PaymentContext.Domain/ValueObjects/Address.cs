@@ -13,6 +13,21 @@ namespace PaymentContext.Domain.ValueObjects
             this.State = state;
             this.Country = country;
             this.ZipCode = zipCode;
+
+            if(string.IsNullOrEmpty(this.Street))
+                AddNotification("Adress.Street", "Endereço inválido");
+            if(string.IsNullOrEmpty(this.Number))
+                AddNotification("Adress.Number", "Endereço inválido");
+            if(string.IsNullOrEmpty(this.Neighborhood))
+                AddNotification("Adress.Neighborhood", "Endereço inválido");
+            if(string.IsNullOrEmpty(this.City))
+                AddNotification("Adress.City", "Endereço inválido");
+            if(string.IsNullOrEmpty(this.State))
+                AddNotification("Adress.State", "Endereço inválido");
+            if(string.IsNullOrEmpty(this.Country))
+                AddNotification("Adress.Country", "Endereço inválido");
+            if(string.IsNullOrEmpty(this.ZipCode))
+                AddNotification("Adress.ZipCode", "Endereço inválido");
         }
 
         public string Street { get; private set; }

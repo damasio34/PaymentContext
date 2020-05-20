@@ -9,6 +9,9 @@ namespace PaymentContext.Domain.ValueObjects
         {
             this.Number = number;
             this.Type = type;
+
+            if(string.IsNullOrEmpty(this.Number))
+                AddNotification("Document.Address", "Documento inválido");
         }
 
         public string Number { get; private set; }
