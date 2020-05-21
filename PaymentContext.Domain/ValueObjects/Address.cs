@@ -1,3 +1,4 @@
+using Flunt.Validations;
 using PaymentContext.Shared.ValueObjects;
 
 namespace PaymentContext.Domain.ValueObjects
@@ -14,20 +15,16 @@ namespace PaymentContext.Domain.ValueObjects
             this.Country = country;
             this.ZipCode = zipCode;
 
-            if(string.IsNullOrEmpty(this.Street))
-                AddNotification("Adress.Street", "Endereço inválido");
-            if(string.IsNullOrEmpty(this.Number))
-                AddNotification("Adress.Number", "Endereço inválido");
-            if(string.IsNullOrEmpty(this.Neighborhood))
-                AddNotification("Adress.Neighborhood", "Endereço inválido");
-            if(string.IsNullOrEmpty(this.City))
-                AddNotification("Adress.City", "Endereço inválido");
-            if(string.IsNullOrEmpty(this.State))
-                AddNotification("Adress.State", "Endereço inválido");
-            if(string.IsNullOrEmpty(this.Country))
-                AddNotification("Adress.Country", "Endereço inválido");
-            if(string.IsNullOrEmpty(this.ZipCode))
-                AddNotification("Adress.ZipCode", "Endereço inválido");
+            AddNotifications(new Contract()
+                .Requires()
+                .HasMinLen(this.Street, 3, "Adress.Street", "A rua deve conter ao menos 3 caracteres.")
+                .IsNotNullOrEmpty(this.Number, "Adress.Number", "Número inválido.")
+                .IsNotNullOrEmpty(this.Neighborhood, "Adress.Neighborhood", "Bairro inválido.")
+                .IsNotNullOrEmpty(this.City, "Adress.City", "Cidade inválida.")
+                .IsNotNullOrEmpty(this.State, "Adress.State", "Estado inválido.")
+                .IsNotNullOrEmpty(this.Country, "Adress.Country", "País inválido")
+                .IsNotNullOrEmpty(this.ZipCode, "Adress.ZipCode", "CEP inválido.")
+            );
         }
 
         public string Street { get; private set; }

@@ -13,6 +13,9 @@
         Método de validação -> EhMaior(string valor, int quantidade);
     - Cria um código mais maduro e mais testável.
 # VO - Value Object
+    - Dificilmente há validação de regras de negócio, 
+        mas pode conter validações simples de dados, 
+        como por exemplo: É vazio? Tem ao menos x caracteres?
     - São objetos de valor que compõem uma entidade;
     - Geralmente são persistidos dentro da entidade,
         ex: não existe uma tabela name.
@@ -25,3 +28,4 @@
         - Uma exceção é quando ocorre algo que não era pra acontecer e aconteceu, 
             ex.: o banco fora, é algo que não era pra ocorrer, mas ocorreu.
         - Uma validação é algo que você espera que aconteça, algo previsto.
+# SPOF - Single Point Of Fail -  Único Ponto de Falha

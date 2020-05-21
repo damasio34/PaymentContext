@@ -50,12 +50,21 @@ namespace PaymentContext.Domain.Entities
                     Toodas as outras assinaturas em inativas e coloca esta como ativa
             */
 
-            foreach (var sub in this._subscriptions.Where(p => p.Active))
+            var hasSubscriptionActive = false;
+            foreach (var sub in this._subscriptions)
             {
-                sub.Inactivate();
+                if(sub.Active) 
+                {
+                    hasSubscriptionActive = true;
+                    break;
+                    // sub.Inactivate();
+                }
             }
 
-            this._subscriptions.Add(subscription);
+            if(hasSubscriptionActive)
+                AddNotification("Student.Subscriptions", "Você já tem uma assunatira ativa");
+            else
+                this._subscriptions.Add(subscription);
         }
     }
 }

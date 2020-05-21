@@ -1,3 +1,4 @@
+using Flunt.Validations;
 using PaymentContext.Shared.ValueObjects;
 
 namespace PaymentContext.Domain.ValueObjects
@@ -9,10 +10,24 @@ namespace PaymentContext.Domain.ValueObjects
             this.FirstName = firstName;
             this.LastName = lastName;
 
-            if(string.IsNullOrEmpty(this.FirstName))
-                AddNotification("Name.FirstName", "Nome inválido");
-            if(string.IsNullOrEmpty(this.LastName))
-                AddNotification("Name.LastName", "Nome inválido");
+            AddNotifications(new Contract()
+                .Requires()
+                .HasMinLen(this.FirstName, 3, "Name.FirstName", "Nome deve conter ao menos 3 caracteres.")
+                .HasMaxLen(this.FirstName, 40, "Name.FirstName", "Nome deve conter até 40 caracteres.")
+                .HasMinLen(this.LastName, 3, "Name.LastName", "Nome deve conter ao menos 3 caracteres.")                
+            );
+
+            /*
+                Troquei a implementação acima pela comentada abaixo usando a biblioteca flunt, 
+                com a proposta de não precisar testar (pois de acordo com a documentação, 
+                a biblioteca já executa esses testes) e também facilita na leitura do código.
+
+            */
+
+            // if(string.IsNullOrEmpty(this.FirstName))
+            //     AddNotification("Name.FirstName", "Nome inválido");
+            // if(string.IsNullOrEmpty(this.LastName))
+            //     AddNotification("Name.LastName", "Nome inválido");
         }
 
         public string FirstName { get; private set; }
