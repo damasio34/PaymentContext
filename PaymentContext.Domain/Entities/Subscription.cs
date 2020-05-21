@@ -15,6 +15,7 @@ namespace PaymentContext.Domain.Entities
             this.LastUpdateDate = DateTime.Now;
             this.ExpireDate = expireDate;
             this.Active = true;
+            
             this._payments = new List<Payment>();
         }
 
@@ -28,7 +29,8 @@ namespace PaymentContext.Domain.Entities
         {
             AddNotifications(new Contract()
                 .Requires()
-                .IsGreaterThan(DateTime.Now, payment.PaidDate, "Subscription.Payments", "A data do pagamento deve ser futura.")
+                .IsGreaterThan(DateTime.Now, payment.PaidDate, "Subscription.Payments", 
+                    "A data do pagamento deve ser futura.")
             );
 
             if (Valid) this._payments.Add(payment);

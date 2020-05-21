@@ -11,6 +11,12 @@ namespace PaymentContext.Domain.Entities
         {
             this.TransactionCode = transactionCode;
         }
+        public PayPalPayment(string transactionCode, DateTime paidDate, DateTime expireDate, decimal total, 
+            decimal totalPaid, Student student) 
+            : base(paidDate, expireDate, total, totalPaid, student)
+        {
+            this.TransactionCode = transactionCode;
+        }
 
         public string TransactionCode { get; private set; }
     }

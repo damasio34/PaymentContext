@@ -8,6 +8,10 @@ namespace PaymentContext.Domain.Entities
     // Um pagamento por si só não pode existir
     public abstract class Payment : Entity
     {
+        protected Payment(DateTime paidDate, DateTime expireDate, decimal total, decimal totalPaid, Student student)
+            : this(paidDate, expireDate, total, totalPaid, $"{student.Name.FirstName} ${student.Name.LastName}", 
+                student.Document, student.Address, student.Email) { }
+
         protected Payment(DateTime paidDate, DateTime expireDate, decimal total, decimal totalPaid, 
             string payer, Document document, Address address, Email email)
         {
@@ -27,10 +31,10 @@ namespace PaymentContext.Domain.Entities
                 this.Email, 
                 new Contract()
                     .Requires()
-                    .IsNotNullOrEmpty(this.Payer, "Payment.Payer", "Nome do pagador inválido")
+                    .IsNotNullOrEmpty(this.Payer, "Payment.Payer", "Nome do pagador inválido.")
                     .IsGreaterThan(DateTime.Now, this.PaidDate, "Payment.PaidDate", "A data do pagamento deve ser futura.")
-                    .IsGreaterThan(0, this.Total, "Payment.Total", "O total não pode ser zero.")
-                    .IsGreaterOrEqualsThan(this.Total, this.TotalPaid, "Payment.TotalPaid", "O valor pago não pode ser maior que o valor total.")
+                    .IsGreaterThan(this.Total, 0, "Payment.Total", "O total não pode ser zero.")
+                    .AreEquals(this.TotalPaid, this.Total, "Payment.TotalPaid", "O valor pago não pode ser maior que o valor total.")
             );            
         }
 

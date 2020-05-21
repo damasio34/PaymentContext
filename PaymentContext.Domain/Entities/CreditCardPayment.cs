@@ -7,6 +7,9 @@ namespace PaymentContext.Domain.Entities
     {
         public CreditCardPayment(string cardHolderName, string cardNumber, string lastTransactionNumber, 
             DateTime paidDate, DateTime expireDate, decimal total, 
+            decimal totalPaid, Student student): base(paidDate, expireDate, total, totalPaid, student) { }
+        public CreditCardPayment(string cardHolderName, string cardNumber, string lastTransactionNumber, 
+            DateTime paidDate, DateTime expireDate, decimal total, 
             decimal totalPaid, string payer, Document document, Address address, Email email) : base(paidDate, 
             expireDate, total, totalPaid, payer, document, address, email)
         {
