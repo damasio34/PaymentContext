@@ -42,3 +42,5 @@
         não é implementado persistência nessa camada, essa implementação fica para camada de 
         infraestrutura, onde você implementa os repositórios de acordo com a tecnologia e base
         de dados escolhidos para o projeto.
+# Handlers
+    - São basicamente a definição de fluxos do sistema.
