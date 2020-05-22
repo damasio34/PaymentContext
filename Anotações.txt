@@ -29,3 +29,7 @@
             ex.: o banco fora, é algo que não era pra ocorrer, mas ocorreu.
         - Uma validação é algo que você espera que aconteça, algo previsto.
 # SPOF - Single Point Of Fail -  Único Ponto de Falha
+# CQRS - Comand Query Responsability Segregation 
+    - Entenda comandos como escrita e query como leitura;
+    - Dividir a escrita da leitura;
+    - Em alguns casos há banco de dados distintos;
