@@ -32,5 +32,9 @@ namespace PaymentContext.Domain.Commands
         public string PayerState { get; set; }
         public string PayerCountry { get; set; }
         public string PayerZipCode { get; set; }
+
+        public void Validate() {
+            
+        }
     }
 }

@@ -33,3 +33,7 @@
     - Entenda comandos como escrita e query como leitura;
     - Dividir a escrita da leitura;
     - Em alguns casos há banco de dados distintos;
+# Fail Fast Validation
+    - Há cenários que são feitos diversos requests no banco ou a recursos do sistema
+        em requisições que tendem a falhar, a ideia do fail fast validation e verificar 
+        se o comando é válido antes de chegar ao domínio para não consumir recursos da aplicação.
