@@ -37,3 +37,8 @@
     - Há cenários que são feitos diversos requests no banco ou a recursos do sistema
         em requisições que tendem a falhar, a ideia do fail fast validation e verificar 
         se o comando é válido antes de chegar ao domínio para não consumir recursos da aplicação.
+# Repository pattern 
+    - Nada mais é que uma abstração da parte de dados, 
+        não é implementado persistência nessa camada, essa implementação fica para camada de 
+        infraestrutura, onde você implementa os repositórios de acordo com a tecnologia e base
+        de dados escolhidos para o projeto.
