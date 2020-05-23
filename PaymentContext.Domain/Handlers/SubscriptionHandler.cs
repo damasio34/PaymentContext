@@ -37,16 +37,11 @@ namespace PaymentContext.Domain.Handlers
             }
             // Verificar se documento já está cadastrado
             if (this._repository.DocumentExists(command.Document))
-            {
-                AddNotifications(command);
-                return new CommandResult(false, "Este CPF já está em uso.");
-            }   
+                AddNotification("Document", "Este CPF já está em uso.");
+
             // Verificar se e-mail já está cadastrado
             if(this._repository.EmailExists(command.Email))
-            {
-                AddNotifications(command);
-                return new CommandResult(false, "Esse e-mail já está em uso.");
-            }
+                AddNotification("Email", "Esse e-mail já está em uso.");
             // Gerar VOs
             var name = new Name(command.FirstName, command.LastName);
             var document = new Document(command.Document, EDocumentType.CPF);
