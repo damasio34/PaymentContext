@@ -10,12 +10,11 @@ namespace PaymentContext.Domain.Entities
     {
         private IList<Subscription> _subscriptions;
 
-        public Student(Name name, Document document, Email email, Address address)
+        public Student(Name name, Document document, Email email)            
         {
             this.Name = name;
             this.Document = document;
             this.Email = email;
-            this.Address = address;
 
             this._subscriptions = new List<Subscription>();
 
@@ -26,7 +25,14 @@ namespace PaymentContext.Domain.Entities
                 ou seja, ninguém de fora da classe pode alterar esses dados.
             */
 
-            AddNotifications(name, document, email, address);
+            AddNotifications(name, document, email);
+        }
+        public Student(Name name, Document document, Email email, Address address)
+            : this(name, document, email)
+        {
+            this.Address = address;
+            
+            AddNotifications(address);
         }
 
         /*
